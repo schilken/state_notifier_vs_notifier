@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'counter_new.dart';
 import 'counter_old.dart';
+import 'dependency.dart';
 import 'riverpod_logger.dart';
 
 void main() {
@@ -59,6 +60,15 @@ class MyHomePage extends ConsumerWidget {
               },
               child: Text(
                 'StateNotifierProvider: ${ref.watch(oldCounterProvider)}',
+              ),
+            ),
+            const SizedBox(height: 24),
+            ElevatedButton(
+              onPressed: () {
+                ref.read(dependencyProvider.notifier).increment();
+              },
+              child: Text(
+                'change common factor: ${ref.watch(dependencyProvider)}',
               ),
             ),
           ],
