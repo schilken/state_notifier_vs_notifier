@@ -15,6 +15,7 @@ class CounterNew extends Notifier<int> {
 
   @override
   int build() {
+    ref.onDispose(() => print('CounterNew.onDispose'));
     _delta = ref.watch(dependencyProvider);
     print('CounterNew.build _delta: $_delta ');
     return _cachedState ?? 0;

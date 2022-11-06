@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'counter_new.dart';
+import 'counter_new2.dart';
 import 'counter_old.dart';
 import 'counter_old2.dart';
 import 'dependency.dart';
@@ -52,6 +53,15 @@ class MyHomePage extends ConsumerWidget {
               },
               child: Text(
                 'New NotifierProvider: ${ref.watch(newCounterProvider)}',
+              ),
+            ),
+            const SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: () {
+                ref.read(newCounterProvider2.notifier).increment();
+              },
+              child: Text(
+                'New NotifierProvider2: ${ref.watch(newCounterProvider2)}',
               ),
             ),
             const SizedBox(height: 16),

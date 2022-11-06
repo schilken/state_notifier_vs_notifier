@@ -6,6 +6,7 @@ import 'dependency.dart';
 class CounterOld2 extends StateNotifier<int> {
   CounterOld2(this.ref) : super(0) {
     _delta = ref.watch(dependencyProvider);
+    ref.onDispose(() => print('CounterOld2.onDispose'));
     print('CounterOld2.constructor _delta: $_delta');
   }
   final StateNotifierProviderRef<CounterOld2, int> ref;
