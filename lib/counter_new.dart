@@ -7,7 +7,7 @@ import 'dependency.dart';
 class CounterNew extends Notifier<int> {
 
   CounterNew() {
-    print('CounterNew.constructor _delta');
+    print('CounterNew.constructor _delta: $_delta');
   }
 
   int _delta = 1;
@@ -16,7 +16,7 @@ class CounterNew extends Notifier<int> {
   @override
   int build() {
     _delta = ref.watch(dependencyProvider);
-    print('CounterNew.build $_delta ');
+    print('CounterNew.build _delta: $_delta ');
     return _cachedState ?? 0;
   }
 

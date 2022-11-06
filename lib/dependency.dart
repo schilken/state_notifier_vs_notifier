@@ -4,12 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Dependency extends Notifier<int> {
   Dependency() {
-    print('CounterNew.constructor');
+    print('Dependency.constructor');
   }
 
   @override
   int build() {
-    print('Count.build');
+    print('Dependency.build');
     return 1;
   }
 
