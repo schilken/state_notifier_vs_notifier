@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'counter_new.dart';
 import 'counter_old.dart';
+import 'counter_old2.dart';
 import 'dependency.dart';
 import 'riverpod_logger.dart';
 
@@ -50,16 +51,25 @@ class MyHomePage extends ConsumerWidget {
                 ref.read(newCounterProvider.notifier).increment();
               },
               child: Text(
-                'NotifierProvider: ${ref.watch(newCounterProvider)}',
+                'New NotifierProvider: ${ref.watch(newCounterProvider)}',
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 ref.read(oldCounterProvider.notifier).increment();
               },
               child: Text(
-                'StateNotifierProvider: ${ref.watch(oldCounterProvider)}',
+                'Old StateNotifierProvider: ${ref.watch(oldCounterProvider)}',
+              ),
+            ),
+            const SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: () {
+                ref.read(oldCounterProvider2.notifier).increment();
+              },
+              child: Text(
+                'Old StateNotifierProvider2: ${ref.watch(oldCounterProvider2)}',
               ),
             ),
             const SizedBox(height: 24),

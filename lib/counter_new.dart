@@ -10,7 +10,7 @@ class CounterNew extends Notifier<int> {
     print('CounterNew.constructor _delta: $_delta');
   }
 
-  int _delta = 1;
+  int _delta = 0; 
   int? _cachedState;
 
   @override
