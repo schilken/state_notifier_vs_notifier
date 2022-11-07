@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'dependency.dart';
 
 class CounterOld2 extends StateNotifier<int> {
@@ -17,6 +16,6 @@ class CounterOld2 extends StateNotifier<int> {
   }
 }
 
-final oldCounterProvider2 = StateNotifierProvider<CounterOld2, int>(
+final oldCounterProvider2 = StateNotifierProvider.autoDispose<CounterOld2, int>(
   (ref) => CounterOld2(ref),
 );
