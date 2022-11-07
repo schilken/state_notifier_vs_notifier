@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,13 +28,46 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Riverpod 2.0 new Providers'),
+      home: const HomePage(title: 'Riverpod 2.0 new Providers'),
     );
   }
 }
 
-class MyHomePage extends ConsumerWidget {
-  const MyHomePage({super.key, required this.title});
+class HomePage extends StatelessWidget {
+  const HomePage({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+//        fullscreenDialog: true,
+                builder: (_) => ButtonsPage(title: title),
+              ),
+            );
+          },
+          child: const Text(
+            'Open ButtonsPage',
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonsPage extends ConsumerWidget {
+  const ButtonsPage({super.key, required this.title});
 
   final String title;
 
@@ -61,7 +95,7 @@ class MyHomePage extends ConsumerWidget {
                 ref.read(newCounterProvider2.notifier).increment();
               },
               child: Text(
-                'New NotifierProvider2: ${ref.watch(newCounterProvider2)}',
+                'New AutoDisposeNotifierProvider: ${ref.watch(newCounterProvider2)}',
               ),
             ),
             const SizedBox(height: 16),
@@ -79,7 +113,7 @@ class MyHomePage extends ConsumerWidget {
                 ref.read(oldCounterProvider2.notifier).increment();
               },
               child: Text(
-                'Old StateNotifierProvider2: ${ref.watch(oldCounterProvider2)}',
+                'Old StateNotifierProvider.autoDispose: ${ref.watch(oldCounterProvider2)}',
               ),
             ),
             const SizedBox(height: 24),
@@ -88,7 +122,7 @@ class MyHomePage extends ConsumerWidget {
                 ref.read(dependencyProvider.notifier).increment();
               },
               child: Text(
-                'change common factor: ${ref.watch(dependencyProvider)}',
+                'Change common delta: ${ref.watch(dependencyProvider)}',
               ),
             ),
           ],
