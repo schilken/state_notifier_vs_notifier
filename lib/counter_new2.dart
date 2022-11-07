@@ -16,7 +16,7 @@ class CounterNew2 extends AutoDisposeNotifier<int> {
   int build() {
     ref.onDispose(() => print('CounterNew2.onDispose'));
     _delta = ref.watch(dependencyProvider);
-    print('CounterNew2.build _delta: $_delta ');
+    print('CounterNew2.build _delta: $_delta , _cachedState: $_cachedState');
     return _cachedState ?? 0;
   }
 

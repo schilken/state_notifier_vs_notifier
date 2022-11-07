@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'dependency.dart';
 
 class CounterNew extends Notifier<int> {
@@ -17,7 +16,7 @@ class CounterNew extends Notifier<int> {
   int build() {
     ref.onDispose(() => print('CounterNew.onDispose'));
     _delta = ref.watch(dependencyProvider);
-    print('CounterNew.build _delta: $_delta ');
+    print('CounterNew.build _delta: $_delta, _cachedState: $_cachedState ');
     return _cachedState ?? 0;
   }
 
